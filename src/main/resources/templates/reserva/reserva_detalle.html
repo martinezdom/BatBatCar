@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/fragments :: head('Detalle de la  reserva')"></head>
+
+<body>
+<div th:replace="fragments/fragments :: header"></div>
+<h1>Detalle de la Reserva <span th:text="${reserva.getCodigoReserva()}"></span></h1>
+
+<form>
+	<fieldset>
+		<legend>Detalles de la reserva</legend>
+		<label>Usuario<br><input name="usuario" th:value="${reserva.getUsuario()}" readonly></label><br>
+		<label>Plazas solicitadas<br><input name="plazasSolicitadas" type="number" th:value="${reserva.getPlazasSolicitadas()}" readonly></label><br>
+		<label>Viaje<br><input name="viaje" th:value="${reserva.getViaje().getCodViaje()}" readonly></label><br>
+	</fieldset>
+</form>
+<br>
+<a th:href="@{/viaje/reservas(codViaje=${reserva.getViaje().getCodViaje()})}">
+	<button type="button">Volver al listado de reservas de este viaje</button>
+</a>
+</body>
+</html>

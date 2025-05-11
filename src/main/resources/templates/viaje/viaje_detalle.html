@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head th:replace="fragments/fragments :: head('Detalle del viaje')"></head>
+
+<body>
+<div th:replace="fragments/fragments :: header"></div>
+
+<main class="main-content">
+	<section class="errors" th:if="${errors}">
+		<p th:each="item : ${errors}">
+			<strong th:text="${item.key}"></strong>: <span th:text="${item.value}"></span>
+		</p>
+	</section>
+
+	<h2 class="trip-detail__title">Detalle del viaje con código
+		<span th:text="${viaje.getCodViaje()}"></span>
+	</h2>
+
+	<form class="trip-detail__form">
+		<fieldset>
+			<legend>Detalles del viaje</legend>
+			<label>Ruta<br><input name="ruta" th:value="${viaje.getRuta()}" readonly></label><br>
+			<label>Plazas ofertadas<br><input name="plazasOfertadas" th:value="${viaje.getPlazasOfertadas()}" readonly></label><br>
+			<label>Propietario<br><input name="propietario" th:value="${viaje.getPropietario()}" readonly></label><br>
+			<label>Precio (€)<br><input name="precio" th:value="${viaje.getPrecio()}" readonly></label><br>
+			<label>Duración aproximada<br><input name="duracion" th:value="${viaje.getDuracion()}" readonly></label><br>
+			<label>Día de salida<br><input name="fecha" th:value="${#temporals.format(viaje.getFechaSalida(), 'dd/MM/yyyy')}" readonly></label><br>
+			<label>Hora de salida<br><input name="hora" th:value="${#temporals.format(viaje.getFechaSalida(), 'HH:mm')}" readonly></label>
+		</fieldset>
+	</form>
+
+	<section th:unless="${reservas.size() == 0}" class="reservations">
+		<h3>Reservas realizadas</h3>
+		<table class="trip-table">
+			<thead>
+			<tr>
+				<th>Cod. Reserva</th>
+				<th>Usuario</th>
+				<th>Plazas Solicitadas</th>
+				<th>Fecha de Reserva</th>
+				<th>Acciones</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr th:each="reserva : ${reservas}">
+				<td th:text="${reserva.getCodigoReserva()}"></td>
+				<td th:text="${reserva.getUsuario()}"></td>
+				<td th:text="${reserva.getPlazasSolicitadas()}"></td>
+				<td th:text="${#temporals.format(reserva.getFechaRealizacion(), 'dd-MM-yyyy ''a las'' HH:mm')}"></td>
+				<td>
+					<a th:href="@{/viaje/reserva(codReserva=${reserva.getCodigoReserva()})}">Ver Detalle</a> |
+					<a th:href="@{/viaje/reserva/del(codReserva=${reserva.getCodigoReserva()})}">Cancelar</a>
+				</td>
+			</tr>
+			</tbody>
+		</table>
+	</section>
+
+	<div th:replace="fragments/fragments :: messages(${infoMensaje}, ${errores})"></div>
+
+	<div class="trip-detail__actions">
+		<a th:href="@{/viaje/cancel(codViaje=${viaje.getCodViaje()})}">
+			<button type="button">Cancelar Viaje</button>
+		</a>
+		<span th:unless="${!(viaje.estaDisponible()) && (viaje.getPlazasDisponibles() == 0)}">
+                <a th:href="@{/viaje/reserva/add(codViaje=${viaje.getCodViaje()})}">
+                    <button type="button">Añadir reserva</button>
+                </a>
+            </span>
+		<a href="/viajes"><button type="button">Volver al listado</button></a>
+	</div>
+</main>
+</body>
+
+</html>

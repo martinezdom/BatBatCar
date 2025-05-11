@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head th:replace="fragments/fragments :: head('Listado de viajes')"></head>
+
+<body>
+<div th:replace="fragments/fragments :: header"></div>
+<main class="main-content">
+    <section class="trip-list__header">
+        <h3 class="trip-list__title">Listado de Viajes</h3>
+    </section>
+
+    <section class="trip-search">
+        <form action="/viajes" method="get" class="trip-search__form">
+            <input type="text" id="destino" name="destino" placeholder="Introduce destino...">
+            <button type="submit">Buscar</button>
+        </form>
+    </section>
+
+    <section th:if="${viajes.size() == 0}" class="trip-empty">
+        <p th:text="${sinResultados}" class="error-message"></p>
+        <div class="trip-empty__actions">
+            <a href="/viaje/add">
+                <button type="button">Añadir Nuevo Viaje</button>
+            </a>
+            <a href="/viajes">
+                <button type="button">Volver al listado de viajes</button>
+            </a>
+        </div>
+    </section>
+
+    <section th:unless="${viajes.size() == 0}" class="trip-list">
+        <table class="trip-table">
+            <thead>
+            <tr>
+                <th>Cod. Viaje</th>
+                <th>Ruta</th>
+                <th>Propietario</th>
+                <th>Fecha y hora de salida</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+                <th>Número de reservas</th>
+                <th>Plazas disponibles</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="viaje : ${viajes}">
+                <td th:text="${viaje.getCodViaje()}"></td>
+                <td th:text="${viaje.getRuta()}"></td>
+                <td th:text="${viaje.getPropietario()}"></td>
+                <td th:text="${#temporals.format(viaje.getFechaSalida(), 'dd-MM-yyyy ''a las'' HH:mm')}"></td>
+                <td th:classappend="${viaje.estaDisponible()} ? 'estado--abierto' : 'estado--cerrado'"
+                    th:text="${viaje.getEstado()}"></td>
+                <td>
+                        <span th:if="${viaje.estaDisponible}">
+                            <a th:href="@{/viaje/reserva/add(codViaje=${viaje.getCodViaje()})}">Reservar</a> |
+                        </span>
+                    <a th:href="@{/viaje(codViaje=${viaje.getCodViaje()})}">Ver detalle</a>
+                    <span th:if="${viaje.seHanRealizadoReservas}">
+                            | <a th:href="@{/viaje/reservas(codViaje=${viaje.getCodViaje()})}">Ver reservas</a>
+                        </span>
+                    <span th:if="${!viaje.isCerrado()}">
+                            | <a th:href="@{/viaje/cancel(codViaje=${viaje.getCodViaje()})}">Cancelar viaje</a>
+                        </span>
+                </td>
+                <td th:text="${viaje.getNumReservas()}"></td>
+                <td th:text="${viaje.getPlazasDisponibles()}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="trip-list__actions">
+            <a href="/viaje/add">
+                <button type="button">Añadir Nuevo Viaje</button>
+            </a>
+            <span th:if="${destino != null}">
+                <a href="/viajes">
+                    <button type="button">Volver al listado de viajes</button>
+                </a>
+            </span>
+        </div>
+    </section>
+
+    <div th:replace="fragments/fragments :: messages(${infoMensaje}, ${errores})"></div>
+</main>
+
+</body>
+</html>

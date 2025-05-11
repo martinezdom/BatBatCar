@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head th:replace="fragments/fragments :: head('Añadir viaje')"></head>
+
+<body>
+<div th:replace="fragments/fragments :: header"></div>
+
+<main class="main-content">
+    <div class="errores" th:if="${errores}">
+        <p th:each="item : ${errores}">
+            <strong th:text="${item.key}"></strong>: <span th:text="${item.value}"></span>
+        </p>
+    </div>
+
+    <form action="/viaje/add" method="post" class="trip-form">
+        <fieldset>
+            <legend>Insertar un nuevo viaje en la Base de Datos</legend>
+            <label>Ruta<br><input name="ruta" type="text" required></label><br>
+            <label>Plazas ofertadas<br><input name="plazasOfertadas" type="number" required></label><br>
+            <label>Propietario<br><input name="propietario" type="text" required></label><br>
+            <label>Precio (€)<br><input name="precio" type="number" step="0.1" required></label><br>
+            <label>Duración aproximada<br><input name="duracion" type="number" required></label><br>
+            <label>Día de salida<br><input name="fecha" type="date" required></label><br>
+            <label>Hora de salida<br><input name="hora" type="time" required></label><br><br>
+            <input type="submit" value="Añadir" class="btn-primary">
+            <a href="/viajes">
+                <button type="button">Volver al listado</button>
+            </a>
+        </fieldset>
+    </form>
+</main>
+</body>
+
+</html>

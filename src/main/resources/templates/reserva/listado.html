@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/fragments :: head('Listado de reservas')"></head>
+
+<body>
+<div th:replace="fragments/fragments :: header"></div>
+<h1>Listado de Reservas - Viaje <span th:text="${codViaje}"></span></h1>
+
+<table class="reservas">
+	<tr>
+		<th>Cod. Reserva</th>
+		<th>Usuario</th>
+		<th>Plazas Solicitadas</th>
+		<th>Fecha y Hora de salida</th>
+		<th>Acciones</th>
+	</tr>
+	<tr th:each="reserva: ${reservas}">
+		<td th:text="${reserva.getCodigoReserva()}"></td>
+		<td th:text="${reserva.getUsuario()}"></td>
+		<td th:text="${reserva.getPlazasSolicitadas()}"></td>
+		<td th:text="${#temporals.format(reserva.getFechaRealizacion(), 'dd-MM-yyyy ''a las'' HH:mm')}"></td>
+		<td><a th:href="@{/viaje/reserva(codReserva=${reserva.getCodigoReserva()})}">Ver Detalle</a></td>
+	</tr>
+</table>
+
+<a href="/viajes"><button type="button">Volver al listado de viajes</button></a>
+</body>
+</html>

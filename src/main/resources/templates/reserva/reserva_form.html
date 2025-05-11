@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/fragments :: head('Añadir reserva')"></head>
+
+<body>
+<div th:replace="fragments/fragments :: header"></div>
+<h1>Añadir Reserva al Viaje <span th:text="${codViaje}"></span></h1>
+
+<form action="/viaje/reserva/add" method="post">
+	<fieldset>
+		<legend>Insertar nueva reserva</legend>
+		<label>Usuario<br><input name="usuario" type="text" required></label><br>
+		<label>Plazas solicitadas<br><input name="plazasSolicitadas" type="number" required></label><br><br>
+		<input type="submit" value="Añadir">
+		<input type="hidden" th:value="${codViaje}" name="codViaje">
+		<a href="/viajes"><button type="button">Volver al listado de viajes</button></a>
+	</fieldset>
+</form>
+<div th:replace="fragments/fragments :: messages(${infoMensaje}, ${errores})"></div>
+</body>
+</html>

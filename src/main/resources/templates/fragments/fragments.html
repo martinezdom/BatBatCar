@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head(title)">
+    <meta charset="UTF-8">
+    <title th:text="${title}">Título</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+<div th:fragment="header">
+    <header class="app-header">
+        <h1 class="app-header__title">Aplicación Bat Bat Car</h1>
+        <h2 class="app-header__subtitle">
+            Desarrollada por <a href="https://github.com/martinezdom" target="_blank">Miguel Ángel Martínez</a>
+        </h2>
+    </header>
+</div>
+
+<div th:fragment="messages(infoMensaje, errores)">
+    <div th:if="${infoMensaje != null}" class="center">
+        <p th:text="${infoMensaje}" class="success"></p>
+    </div>
+    <div th:if="${errores != null}" class="center">
+        <p th:text="${errores}" class="error"></p>
+    </div>
+</div>
+</body>
+</html>
