@@ -28,8 +28,8 @@ Este proyecto es parte de mi portfolio y fue desarrollado utilizando **Spring Bo
 1. Clona el repositorio:
 
     ```bash
-    git clone https://github.com/martinezdom/bat-bat-car.git
-    cd bat-bat-car
+    git clone https://github.com/martinezdom/BatBatCar.git
+    cd BatBatCar
     ```
 
 2. Compila el proyecto utilizando Maven:
