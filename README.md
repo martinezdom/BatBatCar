@@ -8,7 +8,7 @@
   <a href="#"><img alt="Java" src="https://img.shields.io/badge/Java-11-blue?logo=java"></a>
   <a href="#"><img alt="Spring Boot" src="https://img.shields.io/badge/Spring%20Boot-2.6.6-brightgreen?logo=springboot"></a>
   <a href="#"><img alt="Thymeleaf" src="https://img.shields.io/badge/Thymeleaf-3.0.15-green?logo=thymeleaf"></a>
-  <a href="#"><img alt="Maven" src="https://img.shields.io/badge/Maven-red?logo=apachemaven"></a>
+  <a href="#"><img alt="Maven" src="https://img.shields.io/badge/Maven-3.9.9-red?logo=apachemaven"></a>
   <a href="#"><img alt="MySQL" src="https://img.shields.io/badge/MySQL-8.0.29-blue?logo=mysql"></a>
   <a href="LICENSE"><img alt="License" src="https://img.shields.io/badge/License-MIT-yellow.svg"></a>
 </p>
@@ -29,7 +29,7 @@
 - **Java 11**
 - **Spring Boot 2.6.6**
 - **Thymeleaf 3.0.15**
-- **Maven**
+- **Maven 3.9.9**
 - **MySQL 8.0.29**
 - **H2 Database** (por defecto) / **MySQL** (opcional)
 
