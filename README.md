@@ -1,55 +1,67 @@
-# Proyecto Bat Bat Car
+<h1 align="center"><a href="https://github.com/martinezdom/BatBatCar" style="text-decoration: none;">Bat Bat Car</a></h1>
+
+<p align="center">
+  Aplicación web de gestión de viajes y reservas desarrollada con Spring Boot.
+</p>
+
+<p align="center">
+  <a href="#"><img alt="Java" src="https://img.shields.io/badge/Java-11-blue?logo=java"></a>
+  <a href="#"><img alt="Spring Boot" src="https://img.shields.io/badge/Spring%20Boot-2.6.6-brightgreen?logo=springboot"></a>
+  <a href="#"><img alt="Thymeleaf" src="https://img.shields.io/badge/Thymeleaf-3.0.15-green?logo=thymeleaf"></a>
+  <a href="#"><img alt="Maven" src="https://img.shields.io/badge/Maven-red?logo=apachemaven"></a>
+  <a href="#"><img alt="MySQL" src="https://img.shields.io/badge/MySQL-8.0.29-blue?logo=mysql"></a>
+  <a href="LICENSE"><img alt="License" src="https://img.shields.io/badge/License-MIT-yellow.svg"></a>
+</p>
+
+---
 
 ## Descripción
-
-**Bat Bat Car** es una aplicación web que permite a los usuarios gestionar viajes y reservas de manera sencilla y eficiente. Los usuarios pueden consultar los detalles de los viajes disponibles, realizar reservas, cancelar viajes y gestionar sus reservas.
-
-Este proyecto es parte de mi portfolio y fue desarrollado utilizando **Spring Boot** para el backend, **Thymeleaf** para las vistas y **Java** como lenguaje principal. Además, se emplea una arquitectura MVC para separar las preocupaciones y facilitar el mantenimiento y expansión de la aplicación.
+**Bat Bat Car** es una aplicación web que permite a los usuarios consultar, reservar y cancelar viajes. El proyecto está desarrollado con **Spring Boot**, empleando el patrón **MVC** y utilizando **Thymeleaf** como motor de plantillas.
 
 ## Características
+- Consulta de viajes: Ver rutas, precio, plazas, duración y hora de salida.
+- Reserva de viajes: Selección de número de plazas y reserva online.
+- Cancelación de reservas.
+- Validación de formularios.
+- Interfaz moderna y dinámica.
 
-- **Gestión de viajes**: Los usuarios pueden consultar detalles de viajes como ruta, plazas disponibles, precio, duración y hora de salida.
-- **Reserva de viajes**: Los usuarios pueden realizar reservas para un viaje específico, indicando el número de plazas solicitadas.
-- **Cancelación de reservas**: Los usuarios pueden cancelar sus reservas existentes.
-- **Interfaz de usuario**: La aplicación tiene una interfaz amigable basada en **Thymeleaf** que se comunica con el backend para mostrar la información actualizada en tiempo real.
-- **Validación de entradas**: La aplicación valida las entradas del usuario para asegurar que la información ingresada sea correcta antes de ser procesada.
-
-## Tecnologías Utilizadas
-
-- **Backend**: Spring Boot (Java)
-- **Frontend**: Thymeleaf
-- **Base de datos**: H2 (en memoria) / MySQL (opcional)
-- **Dependencias**:
-  - Spring Web
-  - Thymeleaf
+## Tecnologías
+- **Java 11**
+- **Spring Boot 2.6.6**
+- **Thymeleaf 3.0.15**
+- **Maven**
+- **MySQL 8.0.29**
+- **H2 Database** (por defecto) / **MySQL** (opcional)
 
 ## Instalación
+```bash
+# 1. Clonar el repositorio
+git clone https://github.com/martinezdom/BatBatCar.git
+cd BatBatCar
+```
+```bash
+# 2. Compilar el proyecto
+./mvnw clean install
+```
+```bash
+# 3. Ejecutar la aplicación
+./mvnw spring-boot:run
+```
 
-1. Clona el repositorio:
+## Estructura
+<pre>
+BatBatCar/
+├── src/
+│   ├── main/
+│   │   ├── java/                     # Lógica de negocio
+│   │   └── resources/
+│   │       ├── templates/            # Vistas Thymeleaf
+│   │       ├── static/               # CSS, JS, imágenes
+│   │       └── application.properties
+│   └── test/                         # Tests
+├── pom.xml                           # Configuración Maven
+</pre>
 
-    ```bash
-    git clone https://github.com/martinezdom/BatBatCar.git
-    cd BatBatCar
-    ```
-
-2. Compila el proyecto utilizando Maven:
-
-    ```bash
-    ./mvnw clean install
-    ```
-
-3. Ejecuta la aplicación:
-
-    ```bash
-    ./mvnw spring-boot:run
-    ```
-
-4. Abre tu navegador y ve a `http://localhost:8080` para ver la aplicación en acción.
-
-## Estructura del Proyecto
-
-- **`src/main/java`**: Contiene el código fuente de la aplicación, incluyendo controladores, servicios y entidades de JPA.
-- **`src/main/resources/templates`**: Contiene las vistas de Thymeleaf para mostrar la interfaz de usuario.
-- **`src/main/resources/static`**: Contiene los archivos estáticos como CSS, JavaScript y fuentes.
-- **`src/main/resources/application.properties`**: Configuración de la aplicación.
-
+## Autor
+Miguel Ángel Martínez Domínguez  
+[@martinezdom](https://github.com/martinezdom)
