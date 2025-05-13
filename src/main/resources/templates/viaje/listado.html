@@ -6,76 +6,83 @@
 <body>
 <div th:replace="fragments/fragments :: header"></div>
 <main class="main-content">
-    <section class="trip-list__header">
-        <h3 class="trip-list__title">Listado de Viajes</h3>
+    <section class="trip-list-header">
+        <h3 class="trip-list-header__title">Listado de Viajes</h3>
     </section>
 
     <section class="trip-search">
         <form action="/viajes" method="get" class="trip-search__form">
-            <input type="text" id="destino" name="destino" placeholder="Introduce destino...">
-            <button type="submit">Buscar</button>
+            <div class="trip-search__group">
+                <input type="text" id="destino" name="destino" placeholder="Introduce destino..." 
+                       class="trip-search__input">
+                <button type="submit" class="button trip-search__button">Buscar</button>
+            </div>
         </form>
     </section>
 
     <section th:if="${viajes.size() == 0}" class="trip-empty">
-        <p th:text="${sinResultados}" class="error-message"></p>
+        <p th:text="${sinResultados}" class="message message--error"></p>
         <div class="trip-empty__actions">
-            <a href="/viaje/add">
-                <button type="button">Añadir Nuevo Viaje</button>
+            <a href="/viaje/add" class="trip-empty__link">
+                <button type="button" class="button trip-empty__button">Añadir Nuevo Viaje</button>
             </a>
-            <a href="/viajes">
-                <button type="button">Volver al listado de viajes</button>
+            <a href="/viajes" class="trip-empty__link">
+                <button type="button" class="button trip-empty__button">Volver al listado de viajes</button>
             </a>
         </div>
     </section>
 
     <section th:unless="${viajes.size() == 0}" class="trip-list">
         <table class="trip-table">
-            <thead>
-            <tr>
-                <th>Cod. Viaje</th>
-                <th>Ruta</th>
-                <th>Propietario</th>
-                <th>Fecha y hora de salida</th>
-                <th>Estado</th>
-                <th>Acciones</th>
-                <th>Número de reservas</th>
-                <th>Plazas disponibles</th>
-            </tr>
+            <thead class="trip-table__header">
+                <tr class="trip-table__header-row">
+                    <th class="trip-table__header-cell">Cod. Viaje</th>
+                    <th class="trip-table__header-cell">Ruta</th>
+                    <th class="trip-table__header-cell">Propietario</th>
+                    <th class="trip-table__header-cell">Fecha y hora de salida</th>
+                    <th class="trip-table__header-cell">Estado</th>
+                    <th class="trip-table__header-cell">Acciones</th>
+                    <th class="trip-table__header-cell">Número de reservas</th>
+                    <th class="trip-table__header-cell">Plazas disponibles</th>
+                </tr>
             </thead>
-            <tbody>
-            <tr th:each="viaje : ${viajes}">
-                <td th:text="${viaje.getCodViaje()}"></td>
-                <td th:text="${viaje.getRuta()}"></td>
-                <td th:text="${viaje.getPropietario()}"></td>
-                <td th:text="${#temporals.format(viaje.getFechaSalida(), 'dd-MM-yyyy ''a las'' HH:mm')}"></td>
-                <td th:classappend="${viaje.estaDisponible()} ? 'estado--abierto' : 'estado--cerrado'"
-                    th:text="${viaje.getEstado()}"></td>
-                <td>
+            <tbody class="trip-table__body">
+                <tr class="trip-table__row" th:each="viaje : ${viajes}">
+                    <td class="trip-table__cell" th:text="${viaje.getCodViaje()}" data-label="Cod. Viaje"></td>
+                    <td class="trip-table__cell" th:text="${viaje.getRuta()}" data-label="Ruta"></td>
+                    <td class="trip-table__cell" th:text="${viaje.getPropietario()}" data-label="Propietario"></td>
+                    <td class="trip-table__cell" th:text="${#temporals.format(viaje.getFechaSalida(), 'dd-MM-yyyy ''a las'' HH:mm')}" data-label="Fecha y hora de salida"></td>
+                    <td th:if="${viaje.estaDisponible()}" class="trip-table__cell trip-table__cell--open" th:text="${viaje.getEstado()}" data-label="Estado"></td>
+                    <td th:unless="${viaje.estaDisponible()}" class="trip-table__cell trip-table__cell--closed" th:text="${viaje.getEstado()}" data-label="Estado"></td>
+                    <td class="trip-table__cell trip-table__cell--actions" data-label="Acciones">
                         <span th:if="${viaje.estaDisponible}">
-                            <a th:href="@{/viaje/reserva/add(codViaje=${viaje.getCodViaje()})}">Reservar</a> |
+                            <a th:href="@{/viaje/reserva/add(codViaje=${viaje.getCodViaje()})}" 
+                               class="trip-table__action-link">Reservar</a> |
                         </span>
-                    <a th:href="@{/viaje(codViaje=${viaje.getCodViaje()})}">Ver detalle</a>
-                    <span th:if="${viaje.seHanRealizadoReservas}">
-                            | <a th:href="@{/viaje/reservas(codViaje=${viaje.getCodViaje()})}">Ver reservas</a>
+                        <a th:href="@{/viaje(codViaje=${viaje.getCodViaje()})}" 
+                           class="trip-table__action-link">Ver detalle</a>
+                        <span th:if="${viaje.seHanRealizadoReservas}">
+                            | <a th:href="@{/viaje/reservas(codViaje=${viaje.getCodViaje()})}" 
+                                 class="trip-table__action-link">Ver reservas</a>
                         </span>
-                    <span th:if="${!viaje.isCerrado()}">
-                            | <a th:href="@{/viaje/cancel(codViaje=${viaje.getCodViaje()})}">Cancelar viaje</a>
+                        <span th:if="${!viaje.isCerrado()}">
+                            | <a th:href="@{/viaje/cancel(codViaje=${viaje.getCodViaje()})}" 
+                                 class="trip-table__action-link">Cancelar viaje</a>
                         </span>
-                </td>
-                <td th:text="${viaje.getNumReservas()}"></td>
-                <td th:text="${viaje.getPlazasDisponibles()}"></td>
-            </tr>
+                    </td>
+                    <td class="trip-table__cell" th:text="${viaje.getNumReservas()}" data-label="Número de reservas"></td>
+                    <td class="trip-table__cell" th:text="${viaje.getPlazasDisponibles()}" data-label="Plazas disponibles"></td>
+                </tr>
             </tbody>
         </table>
 
-        <div class="trip-list__actions">
-            <a href="/viaje/add">
-                <button type="button">Añadir Nuevo Viaje</button>
+        <div class="trip-list-actions">
+            <a href="/viaje/add" class="trip-list-actions__link">
+                <button type="button" class="button trip-list-actions__button">Añadir Nuevo Viaje</button>
             </a>
             <span th:if="${destino != null}">
-                <a href="/viajes">
-                    <button type="button">Volver al listado de viajes</button>
+                <a href="/viajes" class="trip-list-actions__link">
+                    <button type="button" class="button trip-list-actions__button">Volver al listado de viajes</button>
                 </a>
             </span>
         </div>

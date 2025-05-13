@@ -1,6 +1,6 @@
 :root {
     --darkBlue: #0b2447;
-    --skyBlue: #19376d;
+    --navyBlue: #19376d;
     --blue: #576cbc;
     --lightBlue: #a5d7e8;
     --white: #ffffff;
@@ -15,327 +15,216 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background-color: var(--lightGray);
     color: var(--black);
     line-height: 1.6;
-    padding: 1rem;
+    font-size: 16px;
 }
 
-.app-header {
-    background-color: var(--darkBlue);
-    color: var(--white);
-    padding: 20px 0;
+.trip-list-header__title {
+    font-size: 1.3rem;
+    margin: 1rem 0;
     text-align: center;
-}
-
-.app-header__title {
-    font-size: 2.5em;
-    margin-bottom: 0.5em;
-}
-
-.app-header__subtitle {
-    font-size: 1.2em;
-    font-style: italic;
-}
-
-.app-header__subtitle a {
-    color: var(--lightBlue);
-    text-decoration: none;
-}
-
-.main-content {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.trip-list__title {
-    margin-top: 20px;
-    text-align: center;
+    color: var(--navyBlue);
 }
 
 .trip-search {
-    margin: 20px 0;
-    text-align: center;
-}
-
-.trip-search__form input[type="text"] {
-    padding: 10px;
-    width: 250px;
-    border: 1px solid var(--skyBlue);
-    border-radius: 4px;
-}
-
-.trip-search__form button {
-    padding: 10px 15px;
-    background-color: var(--blue);
-    color: var(--white);
-    border: none;
-    border-radius: 4px;
-    margin-left: 10px;
-    cursor: pointer;
-}
-
-.trip-table {
     width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
+    margin-bottom: 1rem;
+    padding: 1rem;
     background-color: var(--white);
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.trip-table th, .trip-table td {
-    padding: 12px;
-    border: 1px solid #ddd;
+.trip-search__form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.trip-search__group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.trip-search__input {
+    padding: 0.8rem;
+    width: 100%;
+    border: 1px solid var(--navyBlue);
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.trip-empty {
     text-align: center;
+    padding: 2rem;
 }
 
-.trip-table th {
-    background-color: var(--skyBlue);
-    color: var(--white);
-}
-
-.estado--abierto {
-    color: green;
+.message {
+    margin-bottom: 1rem;
     font-weight: bold;
 }
 
-.estado--cerrado {
+.message--error {
     color: red;
-    font-weight: bold;
 }
 
-.trip-list__actions,
 .trip-empty__actions {
-    text-align: center;
-    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
 }
 
-button {
-    padding: 10px 15px;
-    margin: 5px;
-    background-color: var(--skyBlue);
-    color: var(--white);
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: var(--blue);
-}
-
-.trip-detail__title {
-    text-align: center;
-    margin: 20px 0;
-    color: var(--skyBlue);
-}
-
-.trip-detail__form {
-    background-color: var(--white);
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 600px;
-    margin: 0 auto 30px auto;
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
-}
-
-.trip-detail__form fieldset {
-    border: 1px solid var(--lightBlue);
-    padding: 15px;
-    border-radius: 5px;
-}
-
-.trip-detail__form label {
-    display: block;
-    margin-bottom: 15px;
-    color: var(--black);
-}
-
-.trip-detail__form input {
+.trip-empty__button {
     width: 100%;
-    padding: 8px;
-    border: 1px solid var(--lightBlue);
-    border-radius: 4px;
-    background-color: #f9f9f9;
-}
-
-.trip-detail__actions {
-    text-align: center;
-    margin-top: 30px;
-}
-
-.reservations h3 {
-    text-align: center;
-    margin-bottom: 10px;
-    color: var(--skyBlue);
+    padding: 0.8rem;
 }
 
 .trip-table {
     width: 100%;
     border-collapse: collapse;
+    margin-bottom: 1rem;
     background-color: var(--white);
-    margin-top: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    font-size: 0.9rem;
 }
 
-.trip-table th, .trip-table td {
-    padding: 12px;
+.trip-table__header-row {
+    display: none; 
+}
+
+.trip-table__row {
+    display: block;
+    margin-bottom: 1rem;
     border: 1px solid #ddd;
-    text-align: center;
-}
-
-.trip-table th {
-    background-color: var(--skyBlue);
-    color: var(--white);
-}
-
-.trip-form {
-    background-color: var(--white);
-    padding: 20px;
     border-radius: 8px;
-    max-width: 600px;
-    margin: 20px auto;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+    padding: 0.5rem;
 }
 
-.trip-form fieldset {
-    border: 1px solid var(--lightBlue);
-    padding: 20px;
-    border-radius: 6px;
-}
-
-.trip-form legend {
-    font-weight: bold;
-    color: var(--skyBlue);
-    margin-bottom: 10px;
-}
-
-.trip-form label {
-    display: block;
-    margin-bottom: 15px;
-    color: var(--black);
-}
-
-.trip-form input[type="text"],
-.trip-form input[type="number"],
-.trip-form input[type="date"],
-.trip-form input[type="time"] {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid var(--lightBlue);
-    border-radius: 4px;
-    background-color: #f9f9f9;
-}
-
-.trip-form input[type="submit"],
-.trip-form button {
-    padding: 10px 20px;
-    margin-top: 10px;
-    margin-right: 10px;
+.trip-table__cell {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
     border: none;
-    border-radius: 5px;
-    background-color: var(--blue);
-    color: var(--white);
-    cursor: pointer;
+    text-align: right;
+    position: relative;
 }
 
-.trip-form input[type="submit"]:hover,
-.trip-form button:hover {
-    background-color: var(--skyBlue);
-}
-
-table.reservas {
-    width: 90%;
-    margin: 20px auto;
-    border-collapse: collapse;
-    background-color: var(--white);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-table.reservas th,
-table.reservas td {
-    padding: 12px 15px;
-    border: 1px solid var(--lightGray);
-    text-align: center;
-}
-
-table.reservas th {
-    background-color: var(--skyBlue);
-    color: var(--white);
-}
-
-form fieldset {
-    max-width: 600px;
-    margin: 0 auto;
-    border: 2px solid var(--blue);
-    padding: 20px;
-    border-radius: 10px;
-    background-color: var(--white);
-}
-
-form fieldset legend {
+.trip-table__cell::before {
+    content: attr(data-label);
     font-weight: bold;
-    color: var(--skyBlue);
+    text-align: left;
+    margin-right: 1rem;
+    color: var(--navyBlue);
 }
 
-form label {
-    display: block;
-    margin-bottom: 10px;
-}
-
-input[readonly] {
-    background-color: var(--lightGray);
-    border: 1px solid var(--lightBlue);
-    padding: 8px;
-    width: 100%;
-}
-
-form {
-    width: 90%;
-    max-width: 600px;
-    margin: 30px auto;
-    background-color: var(--white);
-    padding: 20px;
-    border-radius: 12px;
-    border: 1px solid var(--lightBlue);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-form fieldset {
-    border: none;
-}
-
-form legend {
-    font-size: 1.2em;
-    color: var(--blue);
-    margin-bottom: 10px;
-}
-
-form label {
-    display: block;
-    margin: 12px 0;
-}
-
-form input[type="text"],
-form input[type="number"] {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid var(--lightBlue);
-    border-radius: 5px;
-    background-color: var(--lightGray);
-}
-
-
-.success-message {
+.trip-table__cell--open {
     color: green;
-    text-align: center;
     font-weight: bold;
-    margin-top: 20px;
 }
 
-.error-message {
+.trip-table__cell--closed {
     color: red;
-    text-align: center;
     font-weight: bold;
-    margin-top: 20px;
+}
+
+.trip-table__cell--actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.trip-table__action-link {
+    color: var(--blue);
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.trip-list-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.trip-list-actions__button {
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 992px) {
+}
+
+/* Estilos generales */
+.app-header {
+    background-image: url('../images/header_background.png');
+    background-position: 50% 60%;
+    background-repeat: repeat-x;
+}
+
+.app-header__title-container {
+    margin: 0 auto;
+    text-align: center;
+    padding: 2rem 0;
+    background-color: var(--darkBlue);
+    width: 50%;
+    color: var(--lightBlue);
+}
+
+.app-header__title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.app-header__subtitle {
+    font-size: 0.9rem;
+}
+
+.app-header__subtitle--link {
+    color: var(--lightBlue);
+    transition: all 0.3s ease;
+}
+
+.app-header__subtitle--link:hover {
+    color: var(--white);
+}
+
+.center {
+    text-align: center;
+    margin: 1rem 0;
+    padding: 0.5rem;
+}
+
+.success {
+    color: green;
+    font-weight: bold;
+}
+
+.error {
+    color: red;
+    font-weight: bold;
+}
+
+.button {
+    padding: 0.8rem;
+    background-color: var(--darkBlue);
+    color: var(--lightBlue);
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: var(--lightBlue);
+    color: var(--darkBlue);
 }
