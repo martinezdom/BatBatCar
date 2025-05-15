@@ -1,4 +1,4 @@
-<h1 align="center"><a href="https://github.com/martinezdom/BatBatCar" style="text-decoration: none;">Bat Bat Car</a></h1>
+<a href="https://github.com/martinezdom/BatBatCar"><img src="https://github.com/martinezdom/BatBatCar/blob/main/src/main/resources/static/images/banner.png?raw=true" alt="Bat Bat Car banner" /></a>
 
 <p align="center">
   Aplicación web de gestión de viajes y reservas desarrollada con Spring Boot.
