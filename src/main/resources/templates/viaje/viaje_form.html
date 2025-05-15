@@ -6,7 +6,7 @@
 <body>
 <div th:replace="fragments/fragments :: header"></div>
 
-<main class="main-content">
+<main>
     <section class="message-container" th:if="${errores}">
         <div class="message message--error" th:each="item : ${errores}">
             <strong th:text="${item.key}"></strong>: <span th:text="${item.value}"></span>
@@ -54,8 +54,8 @@
 
             <div class="trip-form__actions">
                 <button type="submit" class="trip-form__button trip-form__button--primary">Añadir viaje</button>
-                <a href="/viajes" class="trip-form__link">
-                    <button type="button" class="trip-form__button">Volver al listado</button>
+                <a href="/" class="button trip-form__link">
+                    Volver al listado
                 </a>
             </div>
         </fieldset>

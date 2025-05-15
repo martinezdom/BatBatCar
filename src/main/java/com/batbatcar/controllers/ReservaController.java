@@ -29,7 +29,7 @@ public class ReservaController {
 	public String reservaFormActionView(@RequestParam(required = false) Integer codViaje, Model model,
 			RedirectAttributes redirectAttributes) {
 		if (codViaje == null) {
-			return "redirect:/viajes";
+			return "redirect:/";
 		} else {
 			try {
 				viajesRepository.getViajeByCodigo(codViaje);
@@ -37,7 +37,7 @@ public class ReservaController {
 				return "reserva/reserva_form";
 			} catch (ViajeNotFoundException e) {
 				redirectAttributes.addFlashAttribute("errores", "El viaje no se ha encontrado.");
-				return "redirect:/viajes";
+				return "redirect:/";
 			}
 		}
 	}
@@ -55,7 +55,7 @@ public class ReservaController {
 			Reserva reserva = new Reserva(codReserva, usuario, plazasSolicitadas, viaje);
 			viajesRepository.save(reserva);
 			redirectAttributes.addFlashAttribute("infoMensaje", "Reserva añadida con éxito");
-			return "redirect:/viajes";
+			return "redirect:/";
 		} catch (ReservaAlreadyExistsException | ReservaNoValidaException | ViajeNotFoundException
 				| ReservaNotFoundException ex) {
 			HashMap<String, String> errores = new HashMap<>();
@@ -69,7 +69,7 @@ public class ReservaController {
 	public String reservasDeUnViaje(@RequestParam(required = false) Integer codViaje, Model model,
 			RedirectAttributes redirectAttributes) {
 		if (codViaje == null) {
-			return "redirect:/viajes";
+			return "redirect:/";
 		} else {
 			try {
 				Viaje viaje = viajesRepository.getViajeByCodigo(codViaje);
@@ -79,7 +79,7 @@ public class ReservaController {
 				return "reserva/listado";
 			} catch (ViajeNotFoundException ex) {
 				redirectAttributes.addFlashAttribute("errores", ex.getMessage());
-				return "redirect:/viajes";
+				return "redirect:/";
 			}
 		}
 	}
@@ -92,7 +92,7 @@ public class ReservaController {
 			return "reserva/reserva_detalle";
 		} catch (ReservaNotFoundException ex) {
 			redirectAttributes.addFlashAttribute("errores", "La reserva no se ha encontrado.");
-			return "redirect:/viajes";
+			return "redirect:/";
 		}
 	}
 
@@ -105,7 +105,7 @@ public class ReservaController {
 			return "redirect:/viaje?codViaje=" + reserva.getViaje().getCodViaje();
 		} catch (ReservaNotFoundException ex) {
 			redirectAttributes.addFlashAttribute("errores", "La reserva no se ha encontrado.");
-			return "redirect:/viajes";
+			return "redirect:/";
 		}
 	}
 

@@ -1,28 +1,37 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
-<head th:fragment="head(title)">
-    <meta charset="UTF-8">
+  <head th:fragment="head(title)">
+    <meta charset="UTF-8" />
     <title th:text="${title}">Título</title>
-    <link rel="stylesheet" href="/css/main.css">
-</head>
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
 
-<body>
-<div th:fragment="header">
-    <header class="app-header">
+  <body>
+    <div th:fragment="header">
+      <header class="app-header">
         <div class="app-header__title-container">
-            <h1 class="app-header__title">Aplicación Bat Bat Car</h1>
-            <h2 class="app-header__subtitle">Desarrollada por <a href="https://github.com/martinezdom" target="_blank" class="app-header__subtitle--link">Miguel Ángel Martínez</a></h2>
-        </div>
-    </header>
-</div>
+          <h1 class="app-header__title">Aplicación Bat Bat Car</h1>
 
-<div th:fragment="messages(infoMensaje, errores)">
-    <div th:if="${infoMensaje != null}" class="center">
-        <p th:text="${infoMensaje}" class="success"></p>
+        </div>
+      </header>
     </div>
-    <div th:if="${errores != null}" class="center">
-        <p th:text="${errores}" class="error"></p>
+
+    <div th:fragment="messages(infoMensaje, errores)">
+      <div th:if="${infoMensaje != null}" class="center">
+        <p th:text="${infoMensaje}" class="message message--success"></p>
+      </div>
+      <div th:if="${errores != null}" class="center">
+        <p th:text="${errores}" class="message message--error"></p>
+      </div>
     </div>
-</div>
-</body>
+
+    <div th:fragment="footer">
+      <footer class="app-footer">
+        <p class="app-footer__text">
+          Bat Bat Car <br />
+          Miguel Ángel Martínez
+        </p>
+      </footer>
+    </div>
+  </body>
 </html>

@@ -37,7 +37,7 @@ public class ViajesController {
 	 * @throws ViajeNotFoundException
 	 *
 	 */
-	@GetMapping("/viajes")
+	@GetMapping("/")
 	public String getViajesAction(@RequestParam(value = "destino", required = false) String destino, Model model)
 			throws ViajeNotFoundException {
 		Set<Viaje> viajes;
@@ -135,11 +135,11 @@ public class ViajesController {
 			Viaje viaje = new Viaje(codViaje, propietario, ruta, fechaYHora, duracion, precio, plazasOfertadas);
 			viajesRepository.save(viaje);
 			redirectAttributes.addFlashAttribute("infoMensaje", "Viaje añadido con éxito");
-			return "redirect:/viajes";
+			return "redirect:/";
 		} catch (ViajeAlreadyExistsException | ViajeNotFoundException ex) {
 			errores.put("codigo", ex.getMessage());
 			redirectAttributes.addFlashAttribute("errores", errores);
-			return "redirect:/viajes";
+			return "redirect:/";
 		}
 	}
 
@@ -152,8 +152,8 @@ public class ViajesController {
 			model.addAttribute("reservas", reservas);
 			return "viaje/viaje_detalle";
 		} catch (ViajeNotFoundException ex) {
-			redirectAttributes.addFlashAttribute("errores", "El viaje ha sido cancelado exitosamente.");
-			return "redirect:/viajes";
+			redirectAttributes.addFlashAttribute("errores", "No se ha encontrado el viaje con código " + codViaje);
+			return "redirect:/";
 		}
 	}
 
@@ -164,12 +164,12 @@ public class ViajesController {
 			redirectAttributes.addFlashAttribute("infoMensaje", "El viaje ha sido cancelado exitosamente.");
 		} catch (ViajeNotFoundException ex) {
 			redirectAttributes.addFlashAttribute("errores", "El viaje no se ha encontrado.");
-			return "redirect:/viajes";
+			return "redirect:/";
 		} catch (ViajeNotCancelableException ex) {
 			redirectAttributes.addFlashAttribute("errores", "El viaje no se puede cancelar.");
-			return "redirect:/viajes";
+			return "redirect:/";
 		}
-		return "redirect:/viajes";
+		return "redirect:/";
 	}
 
 }

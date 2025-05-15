@@ -13,7 +13,7 @@
 		<label>Plazas solicitadas<br><input name="plazasSolicitadas" type="number" required></label><br><br>
 		<input type="submit" value="Añadir">
 		<input type="hidden" th:value="${codViaje}" name="codViaje">
-		<a href="/viajes"><button type="button">Volver al listado de viajes</button></a>
+		<a href="/viajes" class="button">Volver al listado de viajes</a>
 	</fieldset>
 </form>
 <div th:replace="fragments/fragments :: messages(${infoMensaje}, ${errores})"></div>
