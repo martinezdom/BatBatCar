@@ -26,11 +26,11 @@
     <section th:if="${viajes.size() == 0}" class="trip-empty">
       <p th:text="${sinResultados}" class="message message--error"></p>
       <div class="trip-empty__actions">
-        <a href="/viaje/add" class="button trip-empty__button trip-empty__link">
-          Añadir Nuevo Viaje
-        </a>
         <a href="/" class="button trip-empty__button trip-empty__link">
           Volver al listado de viajes
+        </a>
+        <a href="/viaje/add" class="button trip-empty__button trip-empty__link">
+          Añadir Nuevo Viaje
         </a>
       </div>
     </section>

@@ -2,6 +2,7 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
   <head th:fragment="head(title)">
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title th:text="${title}">Título</title>
     <link rel="stylesheet" href="/css/main.css" />
   </head>
@@ -11,7 +12,15 @@
       <header class="app-header">
         <div class="app-header__title-container">
           <h1 class="app-header__title">Bat Bat Car</h1>
-
+          <h2 class="app-header__subtitle">
+            Desarrollada por
+            <a
+              href="https://github.com/martinezdom"
+              target="_blank"
+              class="app-header__subtitle--link"
+              >Miguel Ángel Martínez</a
+            >
+          </h2>
         </div>
       </header>
     </div>

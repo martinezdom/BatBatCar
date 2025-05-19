@@ -30,8 +30,59 @@ body {
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   background-color: var(--lightGray);
   color: var(--black);
-  line-height: 1.6;
-  font-size: 16px;
+}
+
+/* Estilos generales */
+.center {
+  text-align: center;
+}
+
+.button {
+  display: inline-block;
+  padding: 0.8rem;
+  background-color: var(--darkBlue);
+  color: var(--white);
+  border: 1px solid var(--darkBlue);
+  border-radius: 8px;
+  font-size: 1rem;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: var(--lightBlue);
+  color: var(--darkBlue);
+}
+
+.message {
+  margin: 0 auto;
+  max-width: 400px;
+  margin: 2rem auto 0 auto;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  box-shadow: 0 2px 10px rgba(33,33,33,0.3);
+  background: var(--white);
+}
+
+.message--success {
+  color: #27a738;
+}
+
+.message--error {
+  color: #d32f2f;
+}
+
+footer {
+  background-color: var(--darkBlue);
+  color: var(--white);
+  text-align: center;
+  padding: 0.75rem;
+  position: relative;
+  bottom: 0;
+  width: 100%;
 }
 
 .app-header {
@@ -216,7 +267,7 @@ body {
   color: var(--darkBlue);
 }
 
-.trip-list-actions__button {
+.trip-list-actions__link {
   margin: 0 0 2rem 0;
   width: 100%;
 }
@@ -292,56 +343,23 @@ body {
   .trip-list-actions__button {
     margin: 1rem 0 2rem 0;
   }
-}
 
-/* Estilos generales */
-.center {
-  text-align: center;
-}
+    .trip-list-actions {
+    display: flex;
+    justify-content: center;
+  }
 
-.button {
-  display: inline-block;
-  padding: 0.8rem;
-  background-color: var(--darkBlue);
-  color: var(--white);
-  border: 1px solid var(--darkBlue);
-  border-radius: 8px;
-  font-size: 1rem;
-  text-decoration: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
+  .trip-list-actions__link {
+    width: 20%;
+  }
 
-.button:hover {
-  background-color: var(--lightBlue);
-  color: var(--darkBlue);
-}
+    .trip-empty__actions {
+    margin: 2rem auto 0 auto;
+    flex-direction: row;
+    justify-content: center;
+  }
 
-.message {
-  margin: 0 auto;
-  max-width: 400px;
-  margin: 2rem auto 0 auto;
-  padding: 1rem 1.5rem;
-  border-radius: 8px;
-  font-weight: 600;
-  box-shadow: 0 2px 10px rgba(33,33,33,0.3);
-  background: var(--white);
-}
-
-.message--success {
-  color: #27a738;
-}
-
-.message--error {
-  color: #d32f2f;
-}
-
-footer {
-  background-color: var(--darkBlue);
-  color: var(--white);
-  text-align: center;
-  padding: 0.75rem;
-  position: relative;
-  bottom: 0;
-  width: 100%;
+  .trip-empty__button {
+    width: 50%;
+  }
 }
